@@ -1,0 +1,52 @@
+﻿@model Practicas.Models.Alumnos
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 align="center">Detalle</h2>
+<h4 align="center">Producto</h4>
+<hr />
+<div class="col-md-8 col-md-offset-4" align="left">
+    
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Clave)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Clave)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Producto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Obsevaciones)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Obsevaciones)
+        </dd>
+    </dl>
+</div>
+
+<div align="center">
+    <button class="btn btn-default">
+        @Html.ActionLink("Editar", "Update", new { id = Model.Id })
+    </button> |
+    <a asp-action="List" class="btn btn-default">Regresar a la lista</a>
+</div>

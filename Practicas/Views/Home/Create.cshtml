@@ -1,0 +1,48 @@
+﻿@model Practicas.Models.Alumnos
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2 align="center">Crear Registro</h2>
+
+<h4 align="center">Entrada al almacen</h4>
+<hr />
+<div class="row" align="center">
+    <div class="col-md-4 col-md-offset-4" align="center">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="Clave" class="control-label"></label>
+                <input asp-for="Clave" class="form-control" />
+                <span asp-validation-for="Clave" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Producto" class="control-label"></label>
+                <input asp-for="Producto" class="form-control" />
+                <span asp-validation-for="Producto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Obsevaciones" class="control-label"></label>
+                <input asp-for="Obsevaciones" class="form-control" />
+                <span asp-validation-for="Obsevaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group" align="center">
+                <input type="submit" value="Crear" class="btn btn-default" />
+                <a asp-action="List" class="btn btn-default">Regresar a la lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
