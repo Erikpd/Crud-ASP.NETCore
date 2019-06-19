@@ -10,9 +10,9 @@
 <hr />
 <div class="row" align="center">
     <div class="col-md-4 col-md-offset-4" align="center">
-        <form asp-action="Create">
+        <form asp-action="Create" oninput="resultado.value = parseFloat(valor1.value) * parseFloat(valor2.value).toFixed(2)">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+
             <div class="form-group">
                 <label asp-for="Clave" class="control-label"></label>
                 <input asp-for="Clave" class="form-control" />
@@ -25,13 +25,23 @@
             </div>
             <div class="form-group">
                 <label asp-for="Cantidad" class="control-label"></label>
-                <input asp-for="Cantidad" class="form-control" />
+                <input asp-for="Cantidad" type="number" id="valor1" class="form-control" />
                 <span asp-validation-for="Cantidad" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Obsevaciones" class="control-label"></label>
-                <input asp-for="Obsevaciones" type="date" class="form-control" />
-                <span asp-validation-for="Obsevaciones" class="text-danger"></span>
+                <label asp-for="Fecha_compra" class="control-label">Fecha de compra</label>
+                <input asp-for="Fecha_compra" type="date" style="text-align:center" class="form-control" />
+                <span asp-validation-for="Fecha_compra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio_uni" class="control-label">Precio unitario</label>
+                <input asp-for="Precio_uni" type="number" id="valor2" class="form-control" />
+                <span asp-validation-for="Precio_uni" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <output asp-for="Total" name="resultado" class="form-control" for="valor1 valor2"></output>
+                <span asp-validation-for="Total" class="text-danger"></span>
             </div>
             <div class="form-group" align="center">
                 <input type="submit" value="Crear" class="btn btn-default" />

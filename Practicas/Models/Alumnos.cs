@@ -15,7 +15,12 @@ namespace Practicas.Models
         public String Producto { get; set; }
         [Required]
         public int Cantidad { get; set; }
-        public String Obsevaciones { get; set; }
+        [Required]
+        public String Fecha_compra { get; set; }
+        [Required]
+        public Double Precio_uni { get; set; }
+        [Required]
+        public Double Total { get; set; }
 
     }
 }

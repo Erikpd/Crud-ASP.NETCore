@@ -36,7 +36,7 @@ namespace Practicas.Controllers
                 string connectionString = Configuration["ConnectionStrings:SQLConnection"];
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string sql = $"Insert Into Alumnos (NombreAlumno, ApellidoAlumno, Calificacion, FechaNacimiento) Values ('{alumno.Clave}', '{alumno.Producto}','{alumno.Cantidad}','{alumno.Obsevaciones}')";
+                    string sql = $"Insert Into Alumnos (NombreAlumno, ApellidoAlumno, Calificacion, FechaNacimiento, PrecioUni, Total) Values ('{alumno.Clave}', '{alumno.Producto}','{alumno.Cantidad}','{alumno.Fecha_compra}','{alumno.Precio_uni}','{alumno.Total}')";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.CommandType = CommandType.Text;
@@ -71,7 +71,9 @@ namespace Practicas.Controllers
                         alumno.Clave = Convert.ToString(dataReader["NombreAlumno"]);
                         alumno.Producto = Convert.ToString(dataReader["ApellidoAlumno"]);
                         alumno.Cantidad = Convert.ToInt32(dataReader["Calificacion"]);
-                        alumno.Obsevaciones = Convert.ToString(dataReader["FechaNacimiento"]);
+                        alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
+                        alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
+                        alumno.Total = Convert.ToDouble(dataReader["Total"]);
                         alumnosList.Add(alumno);
                     }
                 }
@@ -98,7 +100,9 @@ namespace Practicas.Controllers
                         alumno.Clave = Convert.ToString(dataReader["NombreAlumno"]);
                         alumno.Producto = Convert.ToString(dataReader["ApellidoAlumno"]);
                         alumno.Cantidad = Convert.ToInt32(dataReader["Calificacion"]);
-                        alumno.Obsevaciones = Convert.ToString(dataReader["FechaNacimiento"]);
+                        alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
+                        alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
+                        alumno.Total = Convert.ToDouble(dataReader["Total"]);
                     }
                 }
                 connection.Close();
@@ -114,7 +118,7 @@ namespace Practicas.Controllers
             string connectionString = Configuration["ConnectionStrings:SQLConnection"];
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = $"Update Alumnos SET NombreAlumno='{alumno.Clave}', ApellidoAlumno='{alumno.Producto}', Calificacion='{alumno.Cantidad}', FechaNacimiento='{alumno.Obsevaciones}' Where Id='{alumno.Id}'";
+                string sql = $"Update Alumnos SET NombreAlumno='{alumno.Clave}', ApellidoAlumno='{alumno.Producto}', Calificacion='{alumno.Cantidad}', FechaNacimiento='{alumno.Fecha_compra}', PrecioUni='{alumno.Precio_uni}', Total='{alumno.Total}' Where Id='{alumno.Id}'";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {               
                     connection.Open();
@@ -143,7 +147,9 @@ namespace Practicas.Controllers
                         alumno.Clave = Convert.ToString(dataReader["NombreAlumno"]);
                         alumno.Producto = Convert.ToString(dataReader["ApellidoAlumno"]);
                         alumno.Cantidad = Convert.ToInt32(dataReader["Calificacion"]);
-                        alumno.Obsevaciones = Convert.ToString(dataReader["FechaNacimiento"]);
+                        alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
+                        alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
+                        alumno.Total = Convert.ToDouble(dataReader["Total"]);
                     }
                 }
                 connection.Close();
@@ -196,7 +202,9 @@ namespace Practicas.Controllers
                         alumno.Clave = Convert.ToString(dataReader["NombreAlumno"]);
                         alumno.Producto = Convert.ToString(dataReader["ApellidoAlumno"]);
                         alumno.Cantidad = Convert.ToInt32(dataReader["Calificacion"]);
-                        alumno.Obsevaciones = Convert.ToString(dataReader["FechaNacimiento"]);
+                        alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
+                        alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
+                        alumno.Total = Convert.ToDouble(dataReader["Total"]);
                     }
                 }
                 connection.Close();
