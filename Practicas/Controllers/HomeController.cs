@@ -103,6 +103,7 @@ namespace Practicas.Controllers
                         alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
                         alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
                         alumno.Total = Convert.ToDouble(dataReader["Total"]);
+                        
                     }
                 }
                 connection.Close();
@@ -118,7 +119,7 @@ namespace Practicas.Controllers
             string connectionString = Configuration["ConnectionStrings:SQLConnection"];
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = $"Update Alumnos SET NombreAlumno='{alumno.Clave}', ApellidoAlumno='{alumno.Producto}', Calificacion='{alumno.Cantidad}', FechaNacimiento='{alumno.Fecha_compra}', PrecioUni='{alumno.Precio_uni}', Total='{alumno.Total}' Where Id='{alumno.Id}'";
+                string sql = $"Update Alumnos SET NombreAlumno='{alumno.Clave}', ApellidoAlumno='{alumno.Producto}', Calificacion='{alumno.Cantidad}', FechaNacimiento='{alumno.Fecha_compra}', PrecioUni='{alumno.Precio_uni}', Total='{alumno.Precio_uni*alumno.Cantidad}' Where Id='{alumno.Id}'";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {               
                     connection.Open();
