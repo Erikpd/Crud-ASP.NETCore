@@ -10,55 +10,67 @@
 <table class="table">
     <thead class="bg-primary">
         <tr>
-            <th>
+            <th style="text-align:center">
                 @Html.DisplayNameFor(model => model.Id)
             </th>
-            <th>
+            <th style="text-align:center">
                 @Html.DisplayNameFor(model => model.Clave)
             </th>
-            <th>
+            <th style="text-align:center">
                 @Html.DisplayNameFor(model => model.Producto)
             </th>
-            <th>
+            <th style="text-align:center">
                 Fecha de compra
             </th>
-            <th>
+            <th style="text-align:center">
                 @Html.DisplayNameFor(model => model.Cantidad)
             </th>
-            <th>
+            <th style="text-align:center">
                 Precio unitario
             </th>
-            <th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.Iva)
+            </th>
+            <th style="text-align:center">
                 @Html.DisplayNameFor(model => model.Total)
             </th>
-            <th>Acciones</th>
+            <th style="text-align:center">Acciones</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Clave)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Producto)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Fecha_compra)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Cantidad)
             </td>
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Precio_uni)
             </td>
-            <td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Subtotal)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Iva)
+            </td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
-            <td>
+            <td align="center">
                 <button class="btn btn-default">
                     @Html.ActionLink("Editar", "Update", new { id = item.Id })
                 </button> |

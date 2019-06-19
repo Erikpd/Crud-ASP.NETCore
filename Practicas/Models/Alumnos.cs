@@ -20,6 +20,10 @@ namespace Practicas.Models
         [Required]
         public Double Precio_uni { get; set; }
         [Required]
+        public Double Subtotal { get; set; }
+        [Required]
+        public Double Iva { get; set; }
+        [Required]
         public Double Total { get; set; }
 
     }

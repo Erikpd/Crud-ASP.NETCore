@@ -36,7 +36,10 @@ namespace Practicas.Controllers
                 string connectionString = Configuration["ConnectionStrings:SQLConnection"];
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string sql = $"Insert Into Alumnos (NombreAlumno, ApellidoAlumno, Calificacion, FechaNacimiento, PrecioUni, Total) Values ('{alumno.Clave}', '{alumno.Producto}','{alumno.Cantidad}','{alumno.Fecha_compra}','{alumno.Precio_uni}','{alumno.Total}')";
+                    double Subtotal = Math.Round((alumno.Precio_uni * alumno.Cantidad),2);
+                    double Iva = Math.Round((Subtotal * .16),2);
+                    double Total = Math.Round((Subtotal + Iva),2);
+                    string sql = $"Insert Into Alumnos (NombreAlumno, ApellidoAlumno, Calificacion, FechaNacimiento, PrecioUni,Subtotal, Iva, Total) Values ('{alumno.Clave}', '{alumno.Producto}','{alumno.Cantidad}','{alumno.Fecha_compra}','{alumno.Precio_uni}','{Subtotal}','{Iva}','{Total}')";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.CommandType = CommandType.Text;
@@ -73,6 +76,8 @@ namespace Practicas.Controllers
                         alumno.Cantidad = Convert.ToInt32(dataReader["Calificacion"]);
                         alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
                         alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
+                        alumno.Subtotal = Convert.ToDouble(dataReader["Subtotal"]);
+                        alumno.Iva = Convert.ToDouble(dataReader["Iva"]);
                         alumno.Total = Convert.ToDouble(dataReader["Total"]);
                         alumnosList.Add(alumno);
                     }
@@ -102,8 +107,10 @@ namespace Practicas.Controllers
                         alumno.Cantidad = Convert.ToInt32(dataReader["Calificacion"]);
                         alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
                         alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
+                        alumno.Subtotal = Convert.ToDouble(dataReader["Subtotal"]);
+                        alumno.Iva = Convert.ToDouble(dataReader["Iva"]);
                         alumno.Total = Convert.ToDouble(dataReader["Total"]);
-                        
+
                     }
                 }
                 connection.Close();
@@ -119,7 +126,10 @@ namespace Practicas.Controllers
             string connectionString = Configuration["ConnectionStrings:SQLConnection"];
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = $"Update Alumnos SET NombreAlumno='{alumno.Clave}', ApellidoAlumno='{alumno.Producto}', Calificacion='{alumno.Cantidad}', FechaNacimiento='{alumno.Fecha_compra}', PrecioUni='{alumno.Precio_uni}', Total='{alumno.Precio_uni*alumno.Cantidad}' Where Id='{alumno.Id}'";
+                double Subtotal = Math.Round((alumno.Precio_uni * alumno.Cantidad), 2);
+                double Iva = Math.Round((Subtotal * .16), 2);
+                double Total = Math.Round((Subtotal + Iva), 2);
+                string sql = $"Update Alumnos SET NombreAlumno='{alumno.Clave}', ApellidoAlumno='{alumno.Producto}', Calificacion='{alumno.Cantidad}', FechaNacimiento='{alumno.Fecha_compra}', PrecioUni='{alumno.Precio_uni}', Subtotal='{Subtotal}', Iva='{Iva}', Total='{Total}' Where Id='{alumno.Id}'";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {               
                     connection.Open();
@@ -150,6 +160,8 @@ namespace Practicas.Controllers
                         alumno.Cantidad = Convert.ToInt32(dataReader["Calificacion"]);
                         alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
                         alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
+                        alumno.Subtotal = Convert.ToDouble(dataReader["Subtotal"]);
+                        alumno.Iva = Convert.ToDouble(dataReader["Iva"]);
                         alumno.Total = Convert.ToDouble(dataReader["Total"]);
                     }
                 }
@@ -205,6 +217,8 @@ namespace Practicas.Controllers
                         alumno.Cantidad = Convert.ToInt32(dataReader["Calificacion"]);
                         alumno.Fecha_compra = Convert.ToString(dataReader["FechaNacimiento"]);
                         alumno.Precio_uni = Convert.ToDouble(dataReader["PrecioUni"]);
+                        alumno.Subtotal = Convert.ToDouble(dataReader["Subtotal"]);
+                        alumno.Iva = Convert.ToDouble(dataReader["Iva"]);
                         alumno.Total = Convert.ToDouble(dataReader["Total"]);
                     }
                 }
